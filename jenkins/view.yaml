@@ -1,0 +1,21 @@
+---
+- view:
+    name: Autotests
+    view-type: list
+    description: |
+      OTUS - QA jobs
+    filter-executors: true
+    filter-queue: true
+    job-name:
+      - 'ui-tests'
+      - 'ui-cucumber-tests'
+      - 'wiremock-tests'
+      - 'appium-tests'
+    columns:
+      - status
+      - weather
+      - job
+      - last-success
+      - last-failure
+      - last-duration
+      - build-button

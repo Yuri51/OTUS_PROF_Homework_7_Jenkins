@@ -1,0 +1,37 @@
+---
+- scm:
+    name: git-appium-autotest
+    scm:
+    - git:
+        url: git@github.com:Yuri51/OTUS_PROF_Homework_6_Appium.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}
+- scm:
+    name: git-cucumber-autotest
+    scm:
+    - git:
+        url: git@github.com:Yuri51/OTUS_PROF_Homework_2_Cucumber.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}
+- scm:
+    name: git-wiremock-autotest
+    scm:
+    - git:
+        url: git@github.com:Yuri51/OTUS_PROF_Homework_5_Wiremock.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}
+- scm:
+    name: git-api-autotest
+    scm:
+    - git:
+        url: git@github.com:Yuri51/OTUS_PROF_Homework_3_RestAssured.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}      

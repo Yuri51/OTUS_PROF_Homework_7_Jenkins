@@ -1,0 +1,24 @@
+- job-template:
+    name: 'wiremock-tests'
+    description: 'Running Wiremock tests'
+    project-type: pipeline
+    concurrent: false
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    properties:
+      - build-discarder:
+          num-to-keep: 10
+    parameters:
+      - string:
+          name: BRANCH
+          default: master
+          description: 'Branch to tests repo'
+      - string:
+          name: BASE_URL
+          default: http://localhost:20
+          description: 'API url' 
+    pipeline-scm:
+      scm:
+      - git-wiremock-autotest
+      script-path: jenkins/wiremock-tests.groovy

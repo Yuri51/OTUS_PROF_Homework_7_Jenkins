@@ -1,0 +1,10 @@
+---
+- project:
+    name: 'OTUS-QA'
+    job-description: '<h4 style="color:#999696;">QA jobs</h4>'
+    jobs:
+      - 'ui-cucumber-tests'
+      - 'api-tests'
+      - 'wiremock-tests'
+      - 'appium-tests'
+

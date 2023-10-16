@@ -1,0 +1,28 @@
+- job-template:
+    name: 'ui-cucumber-tests'
+    description: 'Running UI tests'
+    project-type: pipeline
+    concurrent: false
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    properties:
+      - build-discarder:
+          num-to-keep: 10
+    parameters:
+      - string:
+          name: BRANCH
+          default: master
+          description: 'Branch to tests repo'
+      - string:
+          name: BASE_URL
+          default: https://otus.ru
+          description: 'Web page url'
+      - string:
+          name: BROWSER
+          default: chrome
+          description: 'Browser name'
+    pipeline-scm:
+      scm:
+        - git-cucumber-autotest
+      script-path: jenkins/ui-cucumber-tests.groovy
