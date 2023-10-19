@@ -1,5 +1,5 @@
 timeout(180) {
-    node('gradle') {
+    node('maven') {
         timestamps {
             wrap([$class: 'BuildUser']) {
                 summary = """|<b>Owner:</b> ${env.BUILD_USER}
@@ -12,7 +12,7 @@ timeout(180) {
             }
             stage('Run tests') {
                 tests_exit_code = sh(
-                    script: "gradle test -DbaseUrl=$BASE_URL",
+                        script: "mvn test -DbaseUrl=$BASE_URL",
                 )
                 if (tests_exit_code != 0) {
                     currentBuild.result = 'UNSTABLE'
@@ -20,11 +20,11 @@ timeout(180) {
             }
             stage('Publish artifacts') {
                 allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'build/reports/allure-results']]
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'allure-results']]
                 ])
             }
         }

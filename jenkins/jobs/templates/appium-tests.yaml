@@ -28,7 +28,7 @@
           description: 'Platform version'
       - string:
           name: APPIUM_URL
-          default: http://127.0.0.1:4723/wd/hub
+          default: 192.168.56.1:4723
           description: Appium URL
     pipeline-scm:
       scm:

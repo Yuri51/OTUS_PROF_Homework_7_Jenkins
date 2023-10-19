@@ -22,6 +22,10 @@
           name: BROWSER
           default: chrome
           description: 'Browser name'
+      - string:
+          name: BROWSER_VERSION
+          default: 114.0
+          description: 'Browser version'
     pipeline-scm:
       scm:
         - git-cucumber-autotest

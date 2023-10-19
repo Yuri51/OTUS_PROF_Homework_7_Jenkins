@@ -1,6 +1,6 @@
 timeout(180) {
     node('maven') {
-        timestamp {
+        timestamps {
             wrap([$class: 'BuildUser']) {
                 summary = """|<b>Owner:</b> ${env.BUILD_USER}
                             |<b>Branch:</b> ${BRANCH}""".stripMargin()
@@ -8,26 +8,25 @@ timeout(180) {
                 owner_user_id = "${env.BUILD_USER_ID}"
             }
             stage('Checkout') {
-                checkout scv
+                checkout scm
             }
             stage('Run tests') {
                 tests_exit_code = sh(
                         script: "mvn test -DbaseUrl=$BASE_URL",
                 )
-
                 if (tests_exit_code != 0) {
-                    currentBuild.status = 'UNSTABLE'
+                    currentBuild.result = 'UNSTABLE'
                 }
             }
-            stage('Publish artifacts') {
-                allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'build/reports/allure-results']]
-                ])
-            }
+//            stage('Publish artifacts') {
+//                allure([
+//                        includeProperties: false,
+//                        jdk: '',
+//                        properties: [],
+//                        reportBuildPolicy: 'ALWAYS',
+//                        results: [[path: 'allure-results']]
+//                ])
+//            }
         }
     }
 }
